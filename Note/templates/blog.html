@@ -1,0 +1,46 @@
+{% extends 'base.html' %} {% block content %} {% load static %}
+
+<div>
+  <nav>
+    <a href="/home" class="name">Apna-Notes</a>
+    <div class="menu">
+      <button onclick="toggle()" class="menu-btn">Profile</button>
+      <div class="navbar" id="menu-bar">
+        <li><a href="/home">Home</a></li>
+        <li><a href="/my-posts">My Notes</a></li>
+        <li><a href="/add-posts">Add Note</a></li>
+        <li><a href="/logout">Logout</a></li>
+      </div>
+    </div>
+  </nav>
+  <main>
+    <div class="container custom-container" style=" color:white;">
+      <h1>My Notes</h1>
+      {% for note in notes %}
+      <article ">
+        <div
+          class="media-body"
+          style="border: 1px solid white; padding: 25px; margin-bottom: 10px; border-radius: 10px;"
+        >
+          <div class="article-metadata">
+            <h2
+              class="text-uppercase"
+              style="text-align: left; float: left; color: #000000"
+            >
+              {{ note.author }}
+            </h2>
+            <h5 style="text-align: right; float: right">
+              {{ note.date_posted|date:"F d, Y" }}
+            </h5>
+            <hr style="clear: both" />
+          </div>
+          <h3>{{ note.title }}</h3>
+          <p class="article-content">{{ note.description }}</p>
+          <br /><br />
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </main>
+</div>
+{% endblock %}

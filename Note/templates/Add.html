@@ -1,0 +1,54 @@
+{% extends 'base.html' %} {% block content %} {% load static %}
+
+<div>
+  <nav>
+    <a href="/home" class="name">Apna-Notes</a>
+    <div class="menu">
+      <button onClick="toggle()" class="menu-btn">Profile</button>
+      <div class="navbar" id="menu-bar">
+       <li><a href="/home">Home</a></li>
+        <li><a href="/my-posts">My Notes</a></li>
+        <li><a href="/add-posts">Add Note</a></li>
+        <li><a href="/logout">Logout</a></li>
+      </div>
+    </div>
+  </nav>
+  <main>
+    <form method="post">
+      {% csrf_token %}
+      <div class="container custom-container p-5" style="max-width: 1250px; color:white;">
+        <br /><br />
+        <h1 class="fw-bolder">Make a New Note.</h1>
+        <hr />
+        <br />
+        <div class="border border-white p-4">
+          <div class="mb-3">
+            <h3>
+              <label for="exampleInputEmail1" class="form-label"
+                >Title</label
+              >
+            </h3>
+            <input
+              type="text"
+              class="form-control"
+              id="exampleInputText"
+              aria-describedby="emailHelp"
+              name="title"
+            />
+          </div>
+          <div class="form-group">
+            <h3><label for="exampleFormControlTextarea3">Description</label></h3>
+            <textarea
+              class="form-control"
+              id="exampleFormControlTextarea3"
+              rows="7"
+              name="description"
+            ></textarea>
+          </div>
+          <input class="btn btn-primary" type="submit" value="Submit" />
+        </div>
+        </div>
+    </form>
+  </main>
+</div>
+{% endblock %}

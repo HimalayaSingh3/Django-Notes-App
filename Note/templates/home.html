@@ -1,0 +1,55 @@
+{% extends 'base.html' %} {% block content %} {% load static %}
+
+<div>
+  <nav>
+    <a href="/home" class="name">Apna-Notes</a>
+    <div class="menu">
+      <button onClick="toggle()" class="menu-btn">Profile</button>
+      <div class="navbar" id="menu-bar">
+        <li><a href="/home">Home</a></li>
+        <li><a href="/my-posts">My Notes</a></li>
+        <li><a href="/add-posts">Add Note</a></li>
+        <li><a href="/logout">Logout</a></li>
+      </div>
+    </div>
+  </nav>
+  <main>
+    <div
+      class="container custom-container"
+      style="
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        color: white;
+      "
+    >
+      <h1 style="
+      font-weight:bold;
+      ">Welcome to the Notes App</h1>
+      <p>Add your notes and manage them easily.</p>
+      <button style="outline:none; border:none; padding:6px; background-color:blue; border-radius:5px; font-size:18px; color:white; cursor:pointer;">
+        <a href="/add-posts" style=" color: white; text-decoration: none"
+          >Add a Note</a
+        >
+      </button>
+    </div>
+  </main>
+</div>
+
+<script>
+  function toggleContent(postId) {
+    const content = document.getElementById(`content-${postId}`);
+    if (content.dataset.expanded === "true") {
+      content.innerText = content.dataset.short;
+      content.dataset.expanded = "false";
+    } else {
+      content.dataset.short = content.innerText;
+      content.innerText = content.dataset.fullContent;
+      content.dataset.expanded = "true";
+    }
+  }
+</script>
+
+{% endblock %}
